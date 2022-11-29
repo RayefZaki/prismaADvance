@@ -1,4 +1,4 @@
-import { Loans } from "@prisma/client";
+import { loans } from "@prisma/client";
 import { Request, Response } from "express";
 import { prisma } from "../config/db";
 import { paramsType } from "../zod-Schema/zodSchema";
@@ -17,7 +17,7 @@ export const getAllLoan = async (req: Request, res: Response) => {
 
 export const addNewLoan = async (req: Request, res: Response) => {
   try {
-    const newLoan = req.body as Loans;
+    const newLoan = req.body as loans;
     await prisma.loans.create({ data: newLoan });
 
     return res.status(201).json({
@@ -40,7 +40,7 @@ export const lendBooks = async (req: Request, res: Response) => {
       where: {id:userid},
       select: {
         username: true,
-        loan: true,
+        // loan: true,
       },
     });
 

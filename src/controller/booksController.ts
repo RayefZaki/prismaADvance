@@ -1,4 +1,4 @@
-import { Books } from "@prisma/client";
+import { books } from "@prisma/client";
 import { Request, Response } from "express";
 import { prisma } from "../config/db";
 
@@ -16,7 +16,7 @@ export const getAllBooks = async (req: Request, res: Response) => {
 
 export const addNewBook = async (req: Request, res: Response) => {
   try {
-    const newBook = req.body as Books;
+    const newBook = req.body as books;
     await prisma.books.create({ data: newBook });
 
     return res.status(201).json({

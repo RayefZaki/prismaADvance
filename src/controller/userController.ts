@@ -1,4 +1,4 @@
-import {Users} from '@prisma/client'
+import {users} from '@prisma/client'
 import { Response, Request } from "express";
 import { prisma } from "../config/db";
 
@@ -16,7 +16,7 @@ export const getUsers = async (req: Request, res: Response) => {
 
 export const postNewUser = async (req: Request, res: Response) => {
   try {
-    const newUser = req.body as Users;
+    const newUser = req.body as users;
 
     await prisma.users.create({
       data: newUser,
